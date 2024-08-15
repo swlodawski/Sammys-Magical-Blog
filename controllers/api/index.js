@@ -17,5 +17,24 @@ router.post('/', async(req, res) => {
 });
 
 router.post('/login', async(req, res) => {
+    try {
+        const userData = await User.findAll({ where: {
+        user_name:
+        req.body.user_name}});
+
+    if(!userData) {
+        res
+        .status(400).json({ message: 'Please make sure you entered the correct login information'});
+        return;
+    }
+
+    req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+
+        res.json({ user: userData, message: 'You are logged in'});
+    });
+} catch (err) {
     
-})
+}
+    });
