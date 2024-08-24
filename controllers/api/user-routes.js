@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { json } = require('sequelize');
 const {User} = require('../../models');
 
 router.get('/', (req, res) => {
@@ -16,6 +17,17 @@ router.post('/', async(req, res) => {
             password: req.body.password,
         });
         res.status(200).json({message: 'User Created Successfully'})
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/', async (req, res) => {
+    try {
+        const userData = await User.findAll({
+            attributes: {exclude: ['password']}
+        });
+        res.status(200).json(userData);
     } catch (err) {
         res.status(500).json(err);
     }
