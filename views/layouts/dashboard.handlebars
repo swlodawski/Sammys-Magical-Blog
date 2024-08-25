@@ -1,0 +1,27 @@
+<head>
+    <title>Sammys Magical Blog</title>
+</head>
+<body>
+    <h1 class="text-center my-4">Create Post</h1>
+    <form class="container" id="create-blog-form">
+        <div class="mb-3">
+            <label for="blog-title" class="blog-label">Create Blog Post</label>
+            <input type="text" id="blog-title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="blog-description" class="form-label">Blog Description</label>
+            <textarea name="blog-description" id="blog-description" class="form-control" rows="5" required></textarea>
+        </div>
+        <div class="text-center"></div>
+        <button type="submit" class="btn btn-primary">Create Blog</button>
+    </form>
+    <div id="error-message" class="text-danger mt-3 d-none"></div>
+    <h1 class="text-center my-4">Blogs</h1>
+    <div class="container mt-4">
+        {{#if blogs.length}}
+        {{#each blogs}}
+        <div class="card mb-4">
+            
+        </div>
+    </div>
+</body>
