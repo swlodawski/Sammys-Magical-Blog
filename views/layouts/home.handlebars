@@ -1,0 +1,22 @@
+<head>
+    <title>Sammys Magical Blog</title>
+</head>
+<body>
+    <div class="container mt-4"></div>
+    {{#if posts.length}}
+    {{#each posts}}
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">{{title}}</h5>
+            <small class="text-white-50">
+                Posted By{{user.username}} on {{formatDate createdAt}}
+            </small>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{description}}</p>
+
+
+            
+        </div>
+    </div>
+</body>
