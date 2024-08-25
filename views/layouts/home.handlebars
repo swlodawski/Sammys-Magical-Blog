@@ -15,8 +15,19 @@
         <div class="card-body">
             <p class="card-text">{{description}}</p>
 
+                <div class="comments-section mt-3">
+                    <br>
+                    <h6>Comments:</h6>
+                    <div id="comments-{{id}}">
+                        {{#each comments}}
+                        <div class="comment mb-2">
+                            {{content}}-By <strong>{{user.username}}</strong> - <strong>By</strong> {{formatDate createdAt}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
 
-            
+                
         </div>
     </div>
 </body>
