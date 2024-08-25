@@ -1,6 +1,5 @@
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
-const {types} = require('pg');
 
 class Blog extends Model {}
 
@@ -11,21 +10,17 @@ Blog.init (
         primaryKey: true,
         autoIncrement: true,
     },
-    blog_name: {
+    title: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    blog_description: {
+    description: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    blog_poster: {
+    poster: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    created_at: {
-        type: DataTypes.TIME,
-        allowNull: false,
     },
 },
 {
