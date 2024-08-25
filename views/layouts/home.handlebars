@@ -27,7 +27,18 @@
                     </div>
                 </div>
 
-                
+                <form id="comment-form " class="comment-form mt-3" data-post-id"{{id}}">
+                    <div class="mb-3">
+                        <textarea class="form-control comment-text" rows="2" placeholder="Add Comment..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-small">Submit Comment</button>
+                </form>
         </div>
     </div>
+    {{/each}}
+    {{else}}
+    <p class="text-center">Waiting For Comments</p>
+    {{/if}}
+    </div>
+    <script src="/public/comment.js"></script>
 </body>
