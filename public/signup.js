@@ -25,8 +25,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const data = await response.json();
 
-                
+                if (response.ok) {
+                    setTimeout(() => {
+                        alert('Account Created')
+                        window.location.href = data.redirectUrl || '/home';
+                    }, 100);
+                } else {
+                    throw new Error(data.error || 'Registration Failed');
+                }
+            } catch (err) {
+                console.err('Error Occured', err);
+                errorMessageElement.textContent = err.message;
+                errorMessageElement.classList.remove('d-none');
+
+                if (err.message === 'Username Exists') {
+                    const usernameInput = document.getElementById('username');
+                    usernameInput.classList.add('is-invalid');
+                    usernameInput.focus();
+                }
+            } finally {
+                submitButton.disabled = false;
             }
-        })
+        });
+    } else {
+        console.err('Cant get form');
     }
-})
+});
