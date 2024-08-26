@@ -20,8 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify({username, password}),
                 });
 
-                
+                const data = await response.json();
+
+                if(response.ok) {
+                    console.log('Login Successful', data);
+                    alert(data.message);
+                    console.log('Redirecting to:', data.redirectUrl || '/home');
+                    window.location.href = data.redirectUrl || '/home';
+                } else {
+                    throw new Error(data.message || 'Login Unsuccessful');
+                }
+                } catch (error) {
+                    console.log('Error', error);
+                    errorMessage.textContent = error.message;
+                    errorMessage.classList.remove('d-none');
             }
-        })
+        });
+    } else {
+        console.log('Login form missing');
     }
-})
+});
