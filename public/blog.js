@@ -36,4 +36,29 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Blog form not found')
     }
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButton = document.querySelectorAll('.delete-blog');
+        deleteButton.forEach(button => {
+            console.log('Registering delete button', button);
+            button.addEventListener('click', handleDeleteBlog);
+        });
+
+        const editButton = document.querySelectorAll('.edit-blog-btn');
+        editButton.forEach(button => {
+            button.addEventListener('click', toggleEditBlog);
+        });
+
+        const editForm = document.querySelectorAll('edit-blog-form');
+        editForm.forEach(button => {
+            form.addEventListener('submit', handleEditBlog);
+        });
+
+        const cancelEditButton = document.querySelectorAll('.cancel-edit');
+        cancelEditButton.forEach(button =>{
+            console.log('Registering cancel edit button', button);
+            button.addEventListener('click', toggleEditForm);
+        });
+    });
+
     
